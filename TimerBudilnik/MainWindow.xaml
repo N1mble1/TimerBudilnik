@@ -1,0 +1,104 @@
+﻿<Window x:Class="TimerBudilnik.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Timer and Alarm" Height="400" Width="600" 
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Border CornerRadius="20" BorderThickness="1" BorderBrush="Gray">
+        <Border.Background>
+            <!-- Линейный градиент для закругленного фона -->
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="LightBlue" Offset="0.0" />
+                <GradientStop Color="DarkBlue" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid Margin="9,9,9,9">
+            <TabControl>
+                <!-- Вкладка для таймера -->
+                <TabItem Header="Таймер">
+                    <StackPanel>
+                        <TextBlock Text="Таймер" FontSize="16" Margin="0,100,0,10" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBox Name="HoursTextBox" Width="40" Text="00" Margin="5" />
+                            <TextBlock Text=":" />
+                            <TextBox Name="MinutesTextBox" Width="40" Text="00" Margin="5" />
+                            <TextBlock Text=":" />
+                            <TextBox Name="SecondsTextBox" Width="40" Text="00" Margin="5" />
+                        </StackPanel>
+                        <Button Name="StartTimerButton" Content="Запустить" Click="StartTimerButton_Click" Width="140" Margin="5" Background="#FF8DD2FF" FontWeight="Bold" Height="28" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button Name="StopTimerButton" Content="Остановить" Click="StopTimerButton_Click" Width="140" Margin="5"  Background="#FFBFCFDA" FontWeight="Bold" Height="28" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button Name="ResetTimerButton" Content="Сброс" Click="ResetTimerButton_Click" Width="140" Margin="5"  Background="#FFFF7070" FontWeight="Bold" Height="28" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <TextBlock Name="TimerDisplay" FontSize="20" HorizontalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </TabItem>
+
+                <!-- Вкладка для будильника -->
+                <TabItem Header="Будильник">
+                    <StackPanel>
+                        <TextBlock Text="Будильник" FontSize="16" Margin="0,10,0,10" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <DatePicker Name="AlarmDatePicker" />
+                            <TextBlock Text="в" Margin="10,0,10,0" />
+                            <TextBox Name="AlarmTimeTextBox" Width="60" Text="HH:mm" />
+                        </StackPanel>
+                        <Button Name="SetAlarmButton" Content="Установить будильник" Click="SetAlarmButton_Click" Width="159" Margin="5" Background="#FF8DD2FF" FontWeight="Bold" Height="34" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <ListBox Name="AlarmsListBox" Width="200" Margin="5" />
+                        <Button Name="DeleteAlarmButton" Content="Удалить будильник" Click="DeleteAlarmButton_Click" Width="159" Margin="5"  Background="#FFFF7070" FontWeight="Bold" Height="33" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- Вкладка для заметок -->
+                <TabItem Header="Заметки">
+                    <StackPanel>
+                        <TextBlock Text="Заметки" FontSize="16" Margin="0,10,0,10" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <TextBox Name="NotesTextBox" AcceptsReturn="True" Height="200" Width="400" TextWrapping="Wrap" />
+                        <Button Name="SaveNotesButton" Content="Сохранить" Click="SaveNotesButton_Click" Width="117" Margin="5" Background="#FF8DD2FF" FontWeight="Bold" Height="38" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </TabItem>
+
+            </TabControl>
+        </Grid>
+    </Border>
+</Window>
